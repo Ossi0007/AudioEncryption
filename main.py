@@ -59,6 +59,11 @@ def getSum(n):
     list_of_number = list(map(int, strr.strip()))
     return sum(list_of_number)
 
+def DecimalToBinary(num):
+        if num > 1:
+            DecimalToBinary(num // 2)
+            return num%2
+
 
 
 if __name__ == '__main__':
@@ -88,6 +93,8 @@ if __name__ == '__main__':
             print(' '.join(map(str, row)))
     else:
         print("no solution")
+    d=b
+
 # here we are using unix timestamp
     tStamp = math.trunc(time.time())
     print(tStamp)
@@ -95,6 +102,24 @@ if __name__ == '__main__':
     print(p)
     t = p % 16
     u = p % 100
+
+    cipher_key=[]
+# breaking sudoku into 2x2,3x3,4x4.....upto 16x16
+# and multiplying elements to t and converting it into binary
+    for j in range(2,17):
+        for k in range(j):
+            for l in range(j):
+                temp=d[k][l]*t
+                cipher_key.extend(list(bin(temp)[2:]))
+
+    print(cipher_key)
+    for row in d:
+        print(' '.join(map(str, row)))
+    print(len(cipher_key))
+    print(t)
+
+
+
 
 
 
@@ -114,3 +139,4 @@ if __name__ == '__main__':
             # i=struct.unpack('<h',string) for 8bitaudio
             # sample=(bin(i[0]),bin(i[1]))
             fp.write(bin(i[0])+" "+bin(i[1])+"\n")
+
