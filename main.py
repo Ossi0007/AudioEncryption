@@ -134,7 +134,7 @@ if __name__ == '__main__':
         print(length)
         for x in range(length):
             string = song.readframes(1)
-            i = struct.unpack('hh', string) #for
+            i = struct.unpack('hh', string)
             # j = struct.unpack('<H',string)
             # i=struct.unpack('<h',string) for 8bitaudio
             # sample=(bin(i[0]),bin(i[1]))
