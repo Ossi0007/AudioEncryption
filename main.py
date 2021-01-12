@@ -95,7 +95,6 @@ if __name__ == '__main__':
     p = getSum(tStamp)
     print(p)
     t = p % 16
-    u = p % 100
 
     cipher_key=[]
 # breaking sudoku into 2x2,3x3,4x4.....upto 16x16
@@ -107,13 +106,8 @@ if __name__ == '__main__':
                 cipher_key.extend(list(bin(temp)[2:]))
 
     print(cipher_key)
-    print(len(cipher_key))
-
-
-
-
-
-
+    reached_cipher=0
+    reached_li=0
 
 # Converting frames of wav file into its binary
     with open("filename_temporary.txt",'w') as fp:
@@ -132,11 +126,19 @@ if __name__ == '__main__':
             l=[bin(i[0]),bin(i[1])]
             fp.write(bin(i[0])+" "+bin(i[1])+"\n")
             li.append(l)
+        # XORRRRRRRINGGGGGGGGG
+        #     print(getXOR(bin(i[0]),cipher_key[0]))
+            #print(getXOR(bin(i[1]), cipher_key[0]))
+
+
         # print((li[0])[0])
         # print((li[0])[1])
         # print(li[1])
 
-        # zz="0b01111"
-        # yy="1"
-        # print(getXOR(zz,yy))
+        zz="0b01111"
+        yy="1"
+
+        print(getXOR(zz,yy))
+       # print(type(cipher_key))
+
 

@@ -13,26 +13,34 @@ def addZeros(strr, n):
 def getXOR(a, b):
     # Lengths of the given strrings
     aLen = len(a)
-    bLen = len(b)
+    #bLen = len(b)
 
     # Make both the strrings of equal lengths
     # by inserting 0s in the beginning
-    if (aLen > bLen):
-        b = addZeros(b, aLen - bLen)
-    elif (bLen > aLen):
-        a = addZeros(a, bLen - aLen)
+    #if (aLen > bLen):
+    #    b = addZeros(b, aLen - bLen)
+    #elif (bLen > aLen):
+    #    a = addZeros(a, bLen - aLen)
 
         # Updated length
-    lenn = max(aLen, bLen);
+    #lenn = max(aLen, bLen);
 
     # To store the resultant XOR
     res = ""
-    for i in range(lenn):
-        if (a[i] == b[i]):
-            res += "0"
-        elif(a[i]=='b'):
-            res += "b"
+    flag = False
+    for i in range(aLen):
+        if flag:
+            if (a[i] == b):
+                res += "0"
+            else:
+                res += "1"
+        elif a[i]=='b':
+            flag=True
+            res+="b"
         else:
-            res += "1"
+            res+=a[i]
+
+
+
 
     return res
