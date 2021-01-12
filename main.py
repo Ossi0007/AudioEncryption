@@ -109,6 +109,7 @@ if __name__ == '__main__':
     reached_cipher=0
     reached_li=0
 
+
 # Converting frames of wav file into its binary
     with open("filename_temporary.txt",'w') as fp:
 
@@ -129,6 +130,11 @@ if __name__ == '__main__':
         # XORRRRRRRINGGGGGGGGG
         #     print(getXOR(bin(i[0]),cipher_key[0]))
             #print(getXOR(bin(i[1]), cipher_key[0]))
+            print(string)
+            tttt=struct.pack('hh',i[0],i[1])
+            print(tttt)
+            break
+
 
 
         # print((li[0])[0])
