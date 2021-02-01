@@ -118,33 +118,41 @@ if __name__ == '__main__':
         length = song.getnframes()
         values = []
         print(length)
+        enc = wave.open('encrypted_sample.wav', 'w')
+        enc.setparams((2, 2, 8000, 268237, 'NONE', 'not compressed'))
+        r =0
+        leng =len(cipher_key)
         for x in range(length):
             string = song.readframes(1)
             i = struct.unpack('hh', string)
-            # j = struct.unpack('<H',string)
-            # i=struct.unpack('<h',string) for 8bitaudio
+
+            #j = struct.unpack('<H',string)
+           # i=struct.unpack('<h',string) for 8bitaudio
             # sample=(bin(i[0]),bin(i[1]))
             l=[bin(i[0]),bin(i[1])]
             fp.write(bin(i[0])+" "+bin(i[1])+"\n")
             li.append(l)
         # XORRRRRRRINGGGGGGGGG
-        #     print(getXOR(bin(i[0]),cipher_key[0]))
+            #print(getXOR(bin(i[0]),cipher_key[0]))
             #print(getXOR(bin(i[1]), cipher_key[0]))
-            print(string)
-            tttt=struct.pack('hh',i[0],i[1])
-            print(tttt)
-            break
+            # print(string)
+            #print(int(getXOR(bin(i[0]),cipher_key[x]),2),int(getXOR(bin(i[1]),cipher_key[x]),2))
+            tttt=struct.pack('hh',int(getXOR(bin(i[0]),cipher_key[r]),2),int(getXOR(bin(i[1]),cipher_key[r]),2))
+            #data = struct.pack('<h', value)
+            enc.writeframesraw( tttt )
+            r+=1
+            if r==leng:
+                r=0
+            print(r)
+            # print(i)
+            # print(tttt)
 
+            # print(tttt,"TTTT")
 
 
         # print((li[0])[0])
         # print((li[0])[1])
         # print(li[1])
-
-        zz="0b01111"
-        yy="1"
-
-        print(getXOR(zz,yy))
        # print(type(cipher_key))
 
 
